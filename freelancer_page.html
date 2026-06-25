@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talent Freelancer – Inovasi Mandiri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/shared-theme.css">
+  <style>
+    /* ── HOW IT WORKS ── */
+    .how-section { max-width: 1100px; margin: 0 auto; padding: 4rem 4rem 3rem; }
+    .how-section h2 { font-family:'Sora',sans-serif; font-size:1.8rem; font-weight:700; color:#fff; margin-bottom:0.6rem; }
+    .how-section > p { color:rgba(255,255,255,0.55); margin-bottom:2.5rem; }
+    .how-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; }
+    .how-card {
+      background:#111f45; border:1px solid rgba(255,255,255,0.07);
+      border-radius:15px; padding:1.75rem 1.4rem;
+      transition:transform 0.3s, border-color 0.3s;
+    }
+    .how-card:hover { transform:translateY(-4px); border-color:rgba(245,168,0,0.3); }
+    .how-num { font-family:'Sora',sans-serif; font-size:2.8rem; font-weight:800; color:rgba(245,168,0,0.12); line-height:1; margin-bottom:0.7rem; }
+    .how-card h3 { font-size:0.95rem; font-weight:700; color:#fff; margin-bottom:0.45rem; }
+    .how-card p { font-size:0.8rem; color:rgba(255,255,255,0.5); line-height:1.65; }
+
+    /* ── TALENT CATEGORIES ── */
+    .talent-section { background:#0d1b3e; border-top:1px solid rgba(255,255,255,0.07); border-bottom:1px solid rgba(255,255,255,0.07); padding:5rem 4rem; }
+    .talent-inner { max-width:1100px; margin:0 auto; }
+    .talent-inner h2 { font-family:'Sora',sans-serif; font-size:1.8rem; font-weight:700; color:#fff; margin-bottom:0.6rem; }
+    .talent-inner > p { color:rgba(255,255,255,0.55); margin-bottom:2.5rem; }
+    .talent-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); gap:1.1rem; }
+    .talent-card {
+      background:#111f45; border:1px solid rgba(255,255,255,0.07);
+      border-radius:14px; padding:1.4rem;
+      display:flex; gap:1rem; align-items:flex-start;
+      transition:transform 0.3s, border-color 0.3s;
+    }
+    .talent-card:hover { transform:translateY(-3px); border-color:rgba(245,168,0,0.25); }
+    .tc-icon { font-size:1.9rem; flex-shrink:0; }
+    .tc-info h4 { font-size:0.92rem; font-weight:700; color:#fff; margin-bottom:0.35rem; }
+    .tc-info p { font-size:0.77rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+    /* ── WHY US ── */
+    .why-section { max-width:1100px; margin:0 auto; padding:5rem 4rem; }
+    .why-section h2 { font-family:'Sora',sans-serif; font-size:1.8rem; font-weight:700; color:#fff; margin-bottom:0.6rem; }
+    .why-section > p { color:rgba(255,255,255,0.55); margin-bottom:2.5rem; }
+    .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+    .why-item {
+      display:flex; gap:0.9rem; align-items:flex-start;
+      background:#111f45; border:1px solid rgba(255,255,255,0.07);
+      border-radius:14px; padding:1.2rem;
+    }
+    .why-check { color:#f5a800; font-size:1.1rem; flex-shrink:0; margin-top:0.1rem; }
+    .why-item h4 { font-size:0.88rem; font-weight:700; color:#fff; margin-bottom:0.3rem; }
+    .why-item p { font-size:0.77rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+    /* ── CTA ── */
+    .service-cta { text-align:center; padding:5rem 2rem; background:#0d1b3e; border-top:1px solid rgba(255,255,255,0.07); }
+    .service-cta h2 { font-family:'Sora',sans-serif; font-size:2rem; font-weight:700; color:#fff; margin-bottom:0.9rem; }
+    .service-cta p { color:rgba(255,255,255,0.55); margin-bottom:2rem; max-width:480px; margin-left:auto; margin-right:auto; }
+
+    footer { background:#060d1f; border-top:1px solid rgba(255,255,255,0.06); padding:1.5rem 4rem; text-align:center; font-size:0.78rem; color:rgba(255,255,255,0.3); }
+    footer span { color:#f5a800; }
+
+    @media (max-width:768px) {
+      .how-section, .why-section { padding-left:1.5rem; padding-right:1.5rem; }
+      .talent-section { padding-left:1.5rem; padding-right:1.5rem; }
+      .why-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <img src="assets/logo.jpeg" alt="Logo Inovasi Mandiri" class="logo-img">
+    </div>
+    <div class="logo-text">
+      <span class="brand">Inovasi Mandiri</span>
+      <span class="tagline">Solusi Inovasi &amp; Sistem Modern</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="index.html#tentang">Tentang Kami</a></li>
+    <li><a href="index.html#layanan">Layanan</a></li>
+    <li><a href="anggota_page.html">Anggota</a></li>
+    <li><a href="index.html#kontak">Kontak</a></li>
+  </ul>
+  <a href="https://wa.me/62859110490082" class="btn-nav" target="_blank">Hubungi Kami →</a>
+</nav>
+
+<div class="page-hero">
+  <span class="section-label">Layanan Kami</span>
+  <h1>Talent <span>Freelancer Profesional</span><br>untuk Bisnis Anda</h1>
+  <p>Temukan talenta digital terbaik yang telah terseleksi dan terverifikasi oleh tim kami. Fleksibel, efisien, dan siap mendukung proyek Anda kapan saja.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/62859110490082" class="btn-primary" target="_blank">Cari Freelancer →</a>
+    <a href="index.html#layanan" class="btn-outline">Layanan Lainnya</a>
+  </div>
+</div>
+
+<div class="how-section">
+  <h2>Cara Kerjanya</h2>
+  <p>Proses sederhana dan transparan untuk menghubungkan Anda dengan freelancer yang tepat.</p>
+  <div class="how-grid">
+    <div class="how-card"><div class="how-num">01</div><h3>Ceritakan Kebutuhan</h3><p>Hubungi kami dan ceritakan proyek, timeline, serta keahlian yang Anda butuhkan.</p></div>
+    <div class="how-card"><div class="how-num">02</div><h3>Kami Pilihkan Terbaik</h3><p>Tim kami mencocokkan Anda dengan freelancer terverifikasi yang paling relevan.</p></div>
+    <div class="how-card"><div class="how-num">03</div><h3>Interview & Seleksi</h3><p>Anda bisa interview langsung dan memilih freelancer yang paling cocok.</p></div>
+    <div class="how-card"><div class="how-num">04</div><h3>Mulai Proyek</h3><p>Setelah deal, freelancer langsung bekerja dengan koordinasi dari tim kami.</p></div>
+  </div>
+</div>
+
+<div class="talent-section">
+  <div class="talent-inner">
+    <h2>Kategori Talent yang Tersedia</h2>
+    <p>Ratusan freelancer profesional siap membantu berbagai kebutuhan digital bisnis Anda.</p>
+    <div class="talent-grid">
+      <div class="talent-card"><div class="tc-icon">💻</div><div class="tc-info"><h4>Web Developer</h4><p>Frontend, Backend, dan Full-Stack untuk berbagai framework modern.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">📱</div><div class="tc-info"><h4>Mobile Developer</h4><p>Developer Flutter, React Native, Android, dan iOS berpengalaman.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">🎨</div><div class="tc-info"><h4>UI/UX Designer</h4><p>Perancang pengalaman pengguna yang intuitif dan estetis.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">📊</div><div class="tc-info"><h4>Data Analyst</h4><p>Ahli analisis data dan visualisasi untuk keputusan bisnis lebih baik.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">🤖</div><div class="tc-info"><h4>AI / ML Engineer</h4><p>Spesialis machine learning dan implementasi model AI untuk produk Anda.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">📝</div><div class="tc-info"><h4>Content Writer</h4><p>Penulis konten SEO, artikel, copywriting, dan media sosial.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">📈</div><div class="tc-info"><h4>Digital Marketer</h4><p>Spesialis SEO, Google Ads, Meta Ads, dan strategi pemasaran digital.</p></div></div>
+      <div class="talent-card"><div class="tc-icon">🎬</div><div class="tc-info"><h4>Video Editor</h4><p>Editor video kreatif untuk konten promosi, iklan, dan media sosial.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="why-section">
+  <h2>Mengapa Melalui Kami?</h2>
+  <p>Kami bukan sekadar platform — kami mitra yang memastikan kualitas dan kelancaran kolaborasi Anda.</p>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Terverifikasi & Terseleksi</h4><p>Setiap freelancer melalui proses seleksi ketat termasuk tes kompetensi dan portofolio review.</p></div></div>
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Perlindungan Proyek</h4><p>Dana escrow dan perjanjian kerja yang melindungi kepentingan klien di setiap proyek.</p></div></div>
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Koordinasi Dibantu Tim Kami</h4><p>Project manager kami membantu memastikan komunikasi dan progres berjalan lancar.</p></div></div>
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Fleksibel & Skalabel</h4><p>Dari satu freelancer hingga tim lengkap, sesuaikan dengan kebutuhan dan anggaran Anda.</p></div></div>
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Berbasis di Indonesia</h4><p>Freelancer lokal yang paham konteks bisnis Indonesia dan siap komunikasi langsung.</p></div></div>
+    <div class="why-item"><div class="why-check">✓</div><div><h4>Harga Transparan</h4><p>Rate yang jelas dan kompetitif tanpa biaya tersembunyi atau komisi kejutan.</p></div></div>
+  </div>
+</div>
+
+<div class="service-cta">
+  <h2>Butuh Freelancer Profesional?</h2>
+  <p>Ceritakan kebutuhan proyek Anda dan kami akan mencarikan kandidat terbaik dalam 24 jam.</p>
+  <a href="https://wa.me/62859110490082" class="btn-primary" target="_blank">Hubungi Kami Sekarang →</a>
+</div>
+
+<footer>© 2026 <span>Inovasi Mandiri</span>. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anggota Kami – Inovasi Mandiri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/shared-theme.css">
+  <style>
+    /* ── TEAM STATS ── */
+    .team-stats {
+      max-width: 1100px; margin: 0 auto 0;
+      padding: 0 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .ts-item {
+      background: #111f45;
+      border: 1px solid rgba(245,168,0,0.15);
+      border-radius: 14px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .ts-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: #f5a800; margin-bottom: 0.3rem;
+    }
+    .ts-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    /* ── FILTER ── */
+    .filter-section {
+      display: flex; justify-content: center;
+      gap: 0.6rem; flex-wrap: wrap;
+      padding: 0 2rem 2.5rem;
+    }
+
+    /* ── TEAM GRID ── */
+    .team-section { max-width: 1160px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .division-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(245,168,0,0.55);
+      margin-bottom: 1.2rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.25rem; margin-bottom: 3rem;
+    }
+    .team-grid.leaders { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+
+    .member-card {
+      background: #111f45;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+    }
+    .member-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,168,0,0.35);
+    }
+    .member-card.leader::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #f5a800, transparent);
+    }
+
+    .member-photo-placeholder {
+      width: 100%; aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #0d1b3e, #0a1628);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .member-info { padding: 1.2rem 1.3rem 1.4rem; }
+    .member-role {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #f5a800; margin-bottom: 0.3rem;
+    }
+    .member-name {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: #fff; margin-bottom: 0.45rem;
+    }
+    .member-bio {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      line-height: 1.6; margin-bottom: 0.85rem;
+    }
+    .member-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+
+    .member-socials { display: flex; gap: 0.5rem; }
+    .social-btn {
+      width: 30px; height: 30px;
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.4);
+      cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .social-btn:hover { border-color: rgba(245,168,0,0.5); color: #f5a800; background: rgba(245,168,0,0.08); }
+
+    /* ── JOIN CTA ── */
+    .join-cta {
+      text-align: center; padding: 5rem 2rem;
+      background: #0d1b3e;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .join-cta h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 0.9rem;
+    }
+    .join-cta p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+
+    /* ── FOOTER SIMPLE ── */
+    .footer-simple {
+      background: #060d1f;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 4rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-simple span { color: #f5a800; }
+
+    @media (max-width: 768px) {
+      .team-stats { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="11" r="7" stroke="#f5a800" stroke-width="2"/>
+        <rect x="11" y="19" width="6" height="2" rx="1" fill="#f5a800"/>
+        <rect x="12" y="22" width="4" height="2" rx="1" fill="#f5a800"/>
+        <path d="M10 12 L14 8 L18 12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="14" cy="12" r="1.5" fill="white"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="brand">Inovasi Mandiri</span>
+      <span class="tagline">Solusi Inovasi &amp; Sistem Modern</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="index.html#tentang">Tentang Kami</a></li>
+    <li><a href="index.html#layanan">Layanan</a></li>
+    <li><a href="anggota_page.html" class="active">Anggota</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
+    <li><a href="index.html#kontak">Kontak</a></li>
+  </ul>
+  <a href="https://wa.me/62859110490082" class="btn-nav" target="_blank">Hubungi Kami →</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <span class="section-label">Tim Kami</span>
+  <h1>Kenali <span>Anggota Kami</span></h1>
+  <p>Diperkuat oleh para profesional berpengalaman yang berdedikasi menghadirkan solusi teknologi terbaik untuk bisnis Anda.</p>
+</div>
+
+<!-- STATS -->
+<div class="team-stats">
+  <div class="ts-item"><div class="ts-num">25+</div><div class="ts-label">Anggota Tim</div></div>
+  <div class="ts-item"><div class="ts-num">8</div><div class="ts-label">Divisi</div></div>
+  <div class="ts-item"><div class="ts-num">10+</div><div class="ts-label">Tahun Pengalaman</div></div>
+  <div class="ts-item"><div class="ts-num">6</div><div class="ts-label">Kota di Indonesia</div></div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-section">
+  <button class="filter-btn active" onclick="filterTeam('all',this)">Semua</button>
+  <button class="filter-btn" onclick="filterTeam('pimpinan',this)">Pimpinan</button>
+  <button class="filter-btn" onclick="filterTeam('dev',this)">Developer</button>
+  <button class="filter-btn" onclick="filterTeam('desain',this)">Desain & UI/UX</button>
+  <button class="filter-btn" onclick="filterTeam('marketing',this)">Marketing</button>
+  <button class="filter-btn" onclick="filterTeam('support',this)">IT Support</button>
+</div>
+
+<!-- TEAM -->
+<div class="team-section">
+
+  <div class="division-label" data-div="pimpinan">🏛️ &nbsp;Pimpinan</div>
+  <div class="team-grid leaders" data-div="pimpinan">
+    <div class="member-card leader" data-category="pimpinan">
+      <div class="member-photo-placeholder">👨‍💼</div>
+      <div class="member-info">
+        <div class="member-role">CEO & Co-Founder</div>
+        <div class="member-name">Budi Santoso</div>
+        <div class="member-bio">Visioner di balik Inovasi Mandiri, 15 tahun berpengalaman di industri teknologi enterprise.</div>
+        <div class="member-skills"><span class="skill-tag">Strategi Bisnis</span><span class="skill-tag">Leadership</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">✉</a></div>
+      </div>
+    </div>
+    <div class="member-card leader" data-category="pimpinan">
+      <div class="member-photo-placeholder">👩‍💼</div>
+      <div class="member-info">
+        <div class="member-role">CTO & Co-Founder</div>
+        <div class="member-name">Sari Dewi Kusuma</div>
+        <div class="member-bio">Arsitek teknologi perusahaan, ahli sistem terdistribusi dan pengembangan skala besar.</div>
+        <div class="member-skills"><span class="skill-tag">System Architecture</span><span class="skill-tag">AI/ML</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">✉</a></div>
+      </div>
+    </div>
+    <div class="member-card leader" data-category="pimpinan">
+      <div class="member-photo-placeholder">👨‍💼</div>
+      <div class="member-info">
+        <div class="member-role">COO</div>
+        <div class="member-name">Rendra Putra</div>
+        <div class="member-bio">Mengawal operasional harian dan memastikan setiap proyek berjalan tepat waktu.</div>
+        <div class="member-skills"><span class="skill-tag">Operations</span><span class="skill-tag">Project Mgmt</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">✉</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="division-label" data-div="dev">💻 &nbsp;Tim Developer</div>
+  <div class="team-grid" data-div="dev">
+    <div class="member-card" data-category="dev">
+      <div class="member-photo-placeholder">👨‍💻</div>
+      <div class="member-info">
+        <div class="member-role">Lead Full-Stack Developer</div>
+        <div class="member-name">Arif Hidayat</div>
+        <div class="member-bio">Spesialis React & Node.js dengan 8 tahun membangun aplikasi web skala enterprise.</div>
+        <div class="member-skills"><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">PostgreSQL</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">⌨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="dev">
+      <div class="member-photo-placeholder">👩‍💻</div>
+      <div class="member-info">
+        <div class="member-role">Backend Developer</div>
+        <div class="member-name">Nina Rahayu</div>
+        <div class="member-bio">Ahli Python & Django, berfokus pada performa API dan keamanan sistem backend.</div>
+        <div class="member-skills"><span class="skill-tag">Python</span><span class="skill-tag">Django</span><span class="skill-tag">Docker</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">⌨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="dev">
+      <div class="member-photo-placeholder">👨‍💻</div>
+      <div class="member-info">
+        <div class="member-role">Mobile Developer</div>
+        <div class="member-name">Dimas Pratama</div>
+        <div class="member-bio">Developer Flutter & React Native menghadirkan pengalaman mobile yang mulus.</div>
+        <div class="member-skills"><span class="skill-tag">Flutter</span><span class="skill-tag">React Native</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">⌨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="dev">
+      <div class="member-photo-placeholder">👩‍💻</div>
+      <div class="member-info">
+        <div class="member-role">Frontend Developer</div>
+        <div class="member-name">Laila Aminda</div>
+        <div class="member-bio">Menerjemahkan desain menjadi antarmuka interaktif dengan perhatian tinggi pada detail.</div>
+        <div class="member-skills"><span class="skill-tag">Vue.js</span><span class="skill-tag">TypeScript</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">⌨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="division-label" data-div="desain">🎨 &nbsp;Tim Desain & UI/UX</div>
+  <div class="team-grid" data-div="desain">
+    <div class="member-card" data-category="desain">
+      <div class="member-photo-placeholder">👩‍🎨</div>
+      <div class="member-info">
+        <div class="member-role">Lead UI/UX Designer</div>
+        <div class="member-name">Tiara Wulandari</div>
+        <div class="member-bio">Merancang pengalaman digital yang intuitif, berpengalaman di fintech & e-commerce.</div>
+        <div class="member-skills"><span class="skill-tag">Figma</span><span class="skill-tag">User Research</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">🎨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="desain">
+      <div class="member-photo-placeholder">👨‍🎨</div>
+      <div class="member-info">
+        <div class="member-role">Graphic Designer & Branding</div>
+        <div class="member-name">Yoga Pratama</div>
+        <div class="member-bio">Spesialis identitas visual dan branding untuk tampilan yang profesional dan konsisten.</div>
+        <div class="member-skills"><span class="skill-tag">Illustrator</span><span class="skill-tag">Photoshop</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">🎨</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="desain">
+      <div class="member-photo-placeholder">👩‍🎨</div>
+      <div class="member-info">
+        <div class="member-role">Motion Designer</div>
+        <div class="member-name">Fira Anggraeni</div>
+        <div class="member-bio">Menciptakan konten video dan animasi yang menarik untuk berbagai kebutuhan promosi.</div>
+        <div class="member-skills"><span class="skill-tag">After Effects</span><span class="skill-tag">Premiere</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">🎬</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="division-label" data-div="marketing">📈 &nbsp;Tim Marketing Digital</div>
+  <div class="team-grid" data-div="marketing">
+    <div class="member-card" data-category="marketing">
+      <div class="member-photo-placeholder">👩‍💼</div>
+      <div class="member-info">
+        <div class="member-role">Digital Marketing Manager</div>
+        <div class="member-name">Ayu Setiawati</div>
+        <div class="member-bio">Memimpin strategi pemasaran digital multi-channel untuk meningkatkan brand awareness.</div>
+        <div class="member-skills"><span class="skill-tag">SEO/SEM</span><span class="skill-tag">Google Ads</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">📊</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="marketing">
+      <div class="member-photo-placeholder">👨‍💼</div>
+      <div class="member-info">
+        <div class="member-role">Social Media Specialist</div>
+        <div class="member-name">Bagas Nugroho</div>
+        <div class="member-bio">Ahli konten media sosial yang membangun komunitas dan meningkatkan engagement organik.</div>
+        <div class="member-skills"><span class="skill-tag">Content</span><span class="skill-tag">TikTok Ads</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">📱</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="division-label" data-div="support">🛠️ &nbsp;IT Support & Maintenance</div>
+  <div class="team-grid" data-div="support">
+    <div class="member-card" data-category="support">
+      <div class="member-photo-placeholder">👨‍🔧</div>
+      <div class="member-info">
+        <div class="member-role">IT Support Lead</div>
+        <div class="member-name">Hendra Wijaya</div>
+        <div class="member-bio">Memastikan infrastruktur IT klien berjalan optimal dengan respons cepat dan tepat.</div>
+        <div class="member-skills"><span class="skill-tag">Linux</span><span class="skill-tag">Cloud AWS</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">🔧</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+    <div class="member-card" data-category="support">
+      <div class="member-photo-placeholder">👩‍🔧</div>
+      <div class="member-info">
+        <div class="member-role">DevOps Engineer</div>
+        <div class="member-name">Rini Kusumawati</div>
+        <div class="member-bio">Mengotomasi pipeline CI/CD dan mengelola infrastruktur cloud yang andal dan efisien.</div>
+        <div class="member-skills"><span class="skill-tag">Kubernetes</span><span class="skill-tag">CI/CD</span></div>
+        <div class="member-socials"><a href="#" class="social-btn">⚙</a><a href="#" class="social-btn">in</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JOIN CTA -->
+<div class="join-cta">
+  <h2>Bergabunglah Bersama Kami</h2>
+  <p>Kami selalu mencari talenta terbaik yang bersemangat dalam teknologi dan inovasi.</p>
+  <a href="https://wa.me/62859110490082" class="btn-primary" target="_blank">Lihat Lowongan →</a>
+</div>
+
+<footer class="footer-simple">
+  © 2026 <span>Inovasi Mandiri</span>. All rights reserved.
+</footer>
+
+<script>
+function filterTeam(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.member-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.category === cat) ? '' : 'none';
+  });
+  document.querySelectorAll('[data-div]').forEach(d => {
+    if (cat === 'all') { d.style.display = ''; return; }
+    const hasVisible = d.nextElementSibling &&
+      [...d.nextElementSibling.querySelectorAll('.member-card')]
+        .some(c => c.dataset.category === cat);
+    d.style.display = hasVisible ? '' : 'none';
+    if (d.nextElementSibling) d.nextElementSibling.style.display = hasVisible ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pengembangan Website & Aplikasi – Inovasi Mandiri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/shared-theme.css">
+  <style>
+    /* ── HERO 2-COL ── */
+    .service-hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: 6rem 4rem 5rem;
+    }
+    .hero-left .section-label { display: inline-block; }
+    .hero-left h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.18; margin-bottom: 1.2rem;
+    }
+    .hero-left h1 span { color: #f5a800; }
+    .hero-left p { color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .tech-panel {
+      background: #111f45;
+      border: 1px solid rgba(245,168,0,0.15);
+      border-radius: 18px;
+      padding: 2rem;
+    }
+    .tp-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(245,168,0,0.55); margin-bottom: 1.2rem;
+    }
+    .tech-pill {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: rgba(245,168,0,0.07);
+      border: 1px solid rgba(245,168,0,0.18);
+      border-radius: 50px; padding: 0.35rem 0.85rem; margin: 0.25rem;
+      font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.75);
+    }
+    .td { width: 5px; height: 5px; border-radius: 50%; background: #f5a800; flex-shrink:0; }
+
+    /* ── SUB SERVICES ── */
+    .sub-services {
+      max-width: 1200px; margin: 0 auto; padding: 0 4rem 5rem;
+    }
+    .sub-services h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem;
+    }
+    .sub-services > p { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; }
+    .sub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+    .sub-card {
+      background: #111f45;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 15px; padding: 1.6rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .sub-card:hover { transform: translateY(-4px); border-color: rgba(245,168,0,0.3); }
+    .sub-icon { font-size: 2rem; margin-bottom: 0.9rem; }
+    .sub-card h3 { font-size: 0.98rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .sub-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 5rem 4rem; background: #0d1b3e; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-inner h2 { font-family: 'Sora', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
+    .process-inner > p { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 1.5rem; }
+    .step-num { font-family: 'Sora', sans-serif; font-size: 2.8rem; font-weight: 800; color: rgba(245,168,0,0.12); line-height: 1; margin-bottom: 0.4rem; }
+    .step h4 { font-size: 0.93rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* ── STACK ── */
+    .stack-section { max-width: 1200px; margin: 0 auto; padding: 5rem 4rem; }
+    .stack-section h2 { font-family: 'Sora', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
+    .stack-section > p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+    .stack-grid { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .si {
+      padding: 0.55rem 1.1rem; border-radius: 10px;
+      background: rgba(245,168,0,0.07); border: 1px solid rgba(245,168,0,0.18);
+      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.75);
+      transition: all 0.2s; cursor: default;
+    }
+    .si:hover { background: rgba(245,168,0,0.14); color: #f5a800; }
+
+    /* ── CTA ── */
+    .service-cta {
+      text-align: center; padding: 5rem 2rem;
+      background: #0d1b3e; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .service-cta h2 { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 0.9rem; }
+    .service-cta p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; max-width: 480px; margin-left:auto; margin-right:auto; }
+
+    footer { background: #060d1f; border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 4rem; text-align:center; font-size:0.78rem; color:rgba(255,255,255,0.3); }
+    footer span { color: #f5a800; }
+
+    @media (max-width: 900px) {
+      .service-hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+      .sub-services, .stack-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .process-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <img src="assets/logo.jpeg" alt="Logo Inovasi Mandiri" class="logo-img">
+    </div>
+    <div class="logo-text">
+      <span class="brand">Inovasi Mandiri</span>
+      <span class="tagline">Solusi Inovasi &amp; Sistem Modern</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="index.html#tentang">Tentang Kami</a></li>
+    <li><a href="index.html#layanan">Layanan</a></li>
+    <li><a href="anggota_page.html">Anggota</a></li>
+    <li><a href="index.html#kontak">Kontak</a></li>
+  </ul>
+  <a href="https://wa.me/62859110490082" class="btn-nav" target="_blank">Hubungi Kami →</a>
+</nav>
+
+<div class="service-hero">
+  <div class="hero-left">
+    <span class="section-label">Layanan Kami</span>
+    <h1>Pengembangan <span>Website & Aplikasi</span> Custom</h1>
+    <p>Kami membangun solusi digital yang tangguh, skalabel, dan disesuaikan persis dengan kebutuhan bisnis Anda — dari website korporat hingga sistem enterprise yang kompleks.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/62859110490082" class="btn-primary" target="_blank">Konsultasi Gratis →</a>
+      <a href="index.html#layanan" class="btn-outline">Layanan Lainnya</a>
+    </div>
+  </div>
+  <div class="tech-panel">
+    <div class="tp-label">Teknologi yang kami kuasai</div>
+    <div>
+      <span class="tech-pill"><span class="td"></span>React.js</span>
+      <span class="tech-pill"><span class="td"></span>Vue.js</span>
+      <span class="tech-pill"><span class="td"></span>Next.js</span>
+      <span class="tech-pill"><span class="td"></span>Node.js</span>
+      <span class="tech-pill"><span class="td"></span>Python / Django</span>
+      <span class="tech-pill"><span class="td"></span>Laravel</span>
+      <span class="tech-pill"><span class="td"></span>Flutter</span>
+      <span class="tech-pill"><span class="td"></span>React Native</span>
+      <span class="tech-pill"><span class="td"></span>PostgreSQL</span>
+      <span class="tech-pill"><span class="td"></span>MongoDB</span>
+      <span class="tech-pill"><span class="td"></span>AWS / GCP</span>
+      <span class="tech-pill"><span class="td"></span>Docker</span>
+    </div>
+  </div>
+</div>
+
+<div class="sub-services">
+  <h2>Apa yang Kami Kerjakan</h2>
+  <p>Solusi lengkap dari desain hingga deployment, siap mendukung pertumbuhan bisnis Anda.</p>
+  <div class="sub-grid">
+    <div class="sub-card"><div class="sub-icon">🌐</div><h3>Website Korporat & Landing Page</h3><p>Website profesional yang mencerminkan identitas merek, dioptimasi untuk kecepatan dan SEO.</p></div>
+    <div class="sub-card"><div class="sub-icon">🛒</div><h3>Platform E-Commerce</h3><p>Toko online lengkap dengan manajemen produk, pembayaran, dan sistem order otomatis.</p></div>
+    <div class="sub-card"><div class="sub-icon">📊</div><h3>Sistem Manajemen & Dashboard</h3><p>Aplikasi web custom untuk mengelola data, laporan, dan operasional bisnis secara real-time.</p></div>
+    <div class="sub-card"><div class="sub-icon">📱</div><h3>Aplikasi Mobile (Android & iOS)</h3><p>Aplikasi mobile native dan cross-platform yang responsif dan mudah digunakan.</p></div>
+    <div class="sub-card"><div class="sub-icon">🔌</div><h3>Integrasi API & Sistem Pihak Ketiga</h3><p>Koneksi mulus antar sistem — payment gateway, ERP, CRM, dan layanan eksternal lainnya.</p></div>
+    <div class="sub-card"><div class="sub-icon">☁️</div><h3>Migrasi & Deployment Cloud</h3><p>Pemindahan sistem ke infrastruktur cloud yang andal dan efisien biaya untuk skala apapun.</p></div>
+  </div>
+</div>
+
+<div class="process-section">
+  <div class="process-inner">
+    <h2>Proses Kerja Kami</h2>
+    <p>Transparan, terstruktur, dan berorientasi pada hasil.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h4>Konsultasi & Analisis</h4><p>Memahami kebutuhan bisnis, tujuan, dan ekspektasi Anda secara mendalam.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>Perencanaan & Desain</h4><p>Wireframe, arsitektur sistem, dan prototipe interaktif sebelum coding dimulai.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>Pengembangan</h4><p>Proses agile dengan update berkala agar Anda selalu tahu progres proyek.</p></div>
+      <div class="step"><div class="step-num">04</div><h4>Testing & QA</h4><p>Pengujian menyeluruh untuk memastikan performa, keamanan, dan kualitas.</p></div>
+      <div class="step"><div class="step-num">05</div><h4>Launch & Support</h4><p>Peluncuran terkontrol dan dukungan pasca-launch untuk kestabilan jangka panjang.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="stack-section">
+  <h2>Tech Stack Kami</h2>
+  <p>Teknologi terkini dan teruji untuk produk yang skalabel dan mudah dipelihara.</p>
+  <div class="stack-grid">
+    <span class="si">React.js</span><span class="si">Next.js</span><span class="si">Vue.js</span>
+    <span class="si">TypeScript</span><span class="si">Node.js</span><span class="si">Express</span>
+    <span class="si">NestJS</span><span class="si">Python</span><span class="si">Django</span>
+    <span class="si">FastAPI</span><span class="si">Laravel / PHP</span><span class="si">Flutter</span>
+    <span class="si">React Native</span><span class="si">PostgreSQL</span><span class="si">MySQL</span>
+    <span class="si">MongoDB</span><span class="si">Redis</span><span class="si">Docker</span>
+    <span class="si">Kubernetes</span><span class="si">AWS</span><span class="si">Google Cloud</span>
+    <span class="si">GitHub Actions</span>
+  </div>
+</div>
+
+<div class="service-cta">
+  <h2>Siap Membangun Produk Digital Anda?</h2>
+  <p>Ceritakan ide Anda kepada kami. Konsultasi pertama gratis, tanpa komitmen.</p>
+  <a href="https://wa.me/62859110490082" class="btn-primary" target="_blank">Mulai Konsultasi →</a>
+</div>
+
+<footer>© 2026 <span>Inovasi Mandiri</span>. All rights reserved.</footer>
+</body>
+</html>
